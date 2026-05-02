@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/virtual-vending-machine/vending-machine.schema.json",
+  "title": "Vending Machine",
+  "description": "Overall state of a virtual vending machine.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "currency",
+    "inventory",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique machine ID.",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name for the machine.",
+      "minLength": 1
+    },
+    "location": {
+      "type": "string",
+      "description": "Optional machine location."
+    },
+    "currency": {
+      "type": "string",
+      "description": "Default three-letter currency code.",
+      "pattern": "^[A-Z]{3}$",
+      "examples": [
+        "USD"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "description": "Current machine status.",
+      "enum": [
+        "online",
+        "offline",
+        "maintenance",
+        "out_of_service"
+      ]
+    },
+    "inventory": {
+      "type": "array",
+      "description": "Inventory slots in the machine.",
+      "items": {
+        "$ref": "./inventory-item.schema.json"
+      }
+    },
+    "lastUpdated": {
+      "type": "string",
+      "description": "Last time the machine state changed.",
+      "format": "date-time"
+    }
+  }
+}

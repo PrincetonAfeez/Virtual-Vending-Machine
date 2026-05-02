@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/virtual-vending-machine/inventory-item.schema.json",
+  "title": "Inventory Item",
+  "description": "Inventory information for a vending machine slot.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slotCode",
+    "product",
+    "quantity",
+    "capacity"
+  ],
+  "properties": {
+    "slotCode": {
+      "type": "string",
+      "description": "Machine slot code, such as A1 or B2.",
+      "pattern": "^[A-Z][0-9]+$",
+      "examples": [
+        "A1"
+      ]
+    },
+    "product": {
+      "$ref": "./product.schema.json"
+    },
+    "quantity": {
+      "type": "integer",
+      "description": "Current number of products in this slot.",
+      "minimum": 0
+    },
+    "capacity": {
+      "type": "integer",
+      "description": "Maximum number of products this slot can hold.",
+      "minimum": 1
+    },
+    "isAvailable": {
+      "type": "boolean",
+      "description": "Whether the item can currently be purchased."
+    }
+  }
+}

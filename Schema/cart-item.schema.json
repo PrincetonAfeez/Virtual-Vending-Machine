@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/virtual-vending-machine/cart-item.schema.json",
+  "title": "Cart Item",
+  "description": "An item selected by a customer before checkout.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "productId",
+    "slotCode",
+    "quantity",
+    "unitPrice"
+  ],
+  "properties": {
+    "productId": {
+      "type": "string",
+      "description": "ID of the selected product.",
+      "minLength": 1
+    },
+    "slotCode": {
+      "type": "string",
+      "description": "Machine slot where the product is stored.",
+      "pattern": "^[A-Z][0-9]+$"
+    },
+    "quantity": {
+      "type": "integer",
+      "description": "Number of units selected.",
+      "minimum": 1
+    },
+    "unitPrice": {
+      "type": "number",
+      "description": "Price per unit at the time of selection.",
+      "minimum": 0
+    },
+    "lineTotal": {
+      "type": "number",
+      "description": "Optional calculated total for this cart line.",
+      "minimum": 0
+    }
+  }
+}

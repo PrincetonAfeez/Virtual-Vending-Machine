@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/virtual-vending-machine/transaction.schema.json",
+  "title": "Transaction",
+  "description": "A completed or attempted vending machine purchase.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "items",
+    "payment",
+    "subtotal",
+    "status",
+    "createdAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique transaction ID.",
+      "minLength": 1
+    },
+    "items": {
+      "type": "array",
+      "description": "Items purchased or attempted.",
+      "minItems": 1,
+      "items": {
+        "$ref": "./cart-item.schema.json"
+      }
+    },
+    "payment": {
+      "$ref": "./payment.schema.json"
+    },
+    "subtotal": {
+      "type": "number",
+      "description": "Total cost before change or refund handling.",
+      "minimum": 0
+    },
+    "status": {
+      "type": "string",
+      "description": "Transaction status.",
+      "enum": [
+        "created",
+        "paid",
+        "dispensed",
+        "cancelled",
+        "failed"
+      ]
+    },
+    "message": {
+      "type": "string",
+      "description": "Optional status or error message."
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "Transaction creation time.",
+      "format": "date-time"
+    }
+  }
+}

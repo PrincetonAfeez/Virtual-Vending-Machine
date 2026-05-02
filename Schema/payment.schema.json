@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/virtual-vending-machine/payment.schema.json",
+  "title": "Payment",
+  "description": "Payment information for a vending machine transaction.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "method",
+    "amountPaid",
+    "currency",
+    "status"
+  ],
+  "properties": {
+    "method": {
+      "type": "string",
+      "description": "Payment method used by the customer.",
+      "enum": [
+        "cash",
+        "card",
+        "mobile",
+        "test"
+      ]
+    },
+    "amountPaid": {
+      "type": "number",
+      "description": "Amount paid by the customer.",
+      "minimum": 0
+    },
+    "currency": {
+      "type": "string",
+      "description": "Three-letter currency code.",
+      "pattern": "^[A-Z]{3}$",
+      "examples": [
+        "USD"
+      ]
+    },
+    "changeDue": {
+      "type": "number",
+      "description": "Change owed to the customer.",
+      "minimum": 0
+    },
+    "status": {
+      "type": "string",
+      "description": "Payment status.",
+      "enum": [
+        "pending",
+        "approved",
+        "declined",
+        "refunded"
+      ]
+    },
+    "reference": {
+      "type": "string",
+      "description": "Optional payment confirmation or receipt reference."
+    }
+  }
+}

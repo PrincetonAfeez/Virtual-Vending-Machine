@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/virtual-vending-machine/product.schema.json",
+  "title": "Product",
+  "description": "A product that can be sold by the virtual vending machine.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "category",
+    "price",
+    "currency"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique product or slot identifier, such as A1.",
+      "minLength": 1,
+      "examples": [
+        "A1"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the product.",
+      "minLength": 1,
+      "examples": [
+        "Chips"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "description": "Product category.",
+      "enum": [
+        "snack",
+        "drink",
+        "candy",
+        "food",
+        "other"
+      ]
+    },
+    "price": {
+      "type": "number",
+      "description": "Product price.",
+      "minimum": 0
+    },
+    "currency": {
+      "type": "string",
+      "description": "Three-letter currency code.",
+      "pattern": "^[A-Z]{3}$",
+      "examples": [
+        "USD"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional product description."
+    },
+    "imageUrl": {
+      "type": "string",
+      "description": "Optional product image URL.",
+      "format": "uri"
+    }
+  }
+}

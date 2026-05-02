@@ -1,0 +1,32 @@
+{
+  "name": "virtual-vending-machine-schemas",
+  "description": "Simple JSON Schemas for a Virtual Vending Machine repository.",
+  "version": "1.0.0",
+  "schemaDraft": "https://json-schema.org/draft/2020-12/schema",
+  "schemas": [
+    {
+      "name": "Product",
+      "file": "product.schema.json"
+    },
+    {
+      "name": "Inventory Item",
+      "file": "inventory-item.schema.json"
+    },
+    {
+      "name": "Cart Item",
+      "file": "cart-item.schema.json"
+    },
+    {
+      "name": "Payment",
+      "file": "payment.schema.json"
+    },
+    {
+      "name": "Transaction",
+      "file": "transaction.schema.json"
+    },
+    {
+      "name": "Vending Machine",
+      "file": "vending-machine.schema.json"
+    }
+  ]
+}
