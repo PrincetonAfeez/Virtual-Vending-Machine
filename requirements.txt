@@ -1,0 +1,3 @@
+# Editable install pulls in package metadata from pyproject.toml.
+# Dev extras (pytest, pytest-cov, hypothesis, ruff, mypy) match [project.optional-dependencies].dev.
+-e .[dev]
